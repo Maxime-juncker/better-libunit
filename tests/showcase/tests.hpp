@@ -13,9 +13,10 @@
 #ifndef TESTS_H
 # define TESTS_H
 
-# include <libunit.hpp>
+#include <libunit.hpp>
 
-int	tests_launch( void );
+int test_routine( t_FinalResult *res );
+int	ok_routine( t_FinalResult *res );
 
 // tests.cpp
 int	ok_test( void );

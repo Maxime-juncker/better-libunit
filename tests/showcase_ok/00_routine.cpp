@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:49:49 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/27 14:10:45 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:40:18 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 #include <Test.hpp>
 #include "tests.hpp"
 
-int	tests_launch( void )
+int	ok_routine( t_FinalResult* res )
 {
-	Routine	launcher("showcase");
+	Routine	routine("ok tests", res);
 
 	/* ================ ADD TESTS HERE ================ */
-	launcher.AddNewTest(Test("SHOWCASE", "ok", &ok_test));
-	launcher.AddNewTest(Test("SHOWCASE", "ko", &ko_test));
-	launcher.AddNewTest(Test("SHOWCASE", "segv", &segv_test));
+	routine.AddNewTest(Test("SHOWCASE", "ok", &ok_test));
+	routine.AddNewTest(Test("SHOWCASE", "ok", &ok_test));
+	routine.AddNewTest(Test("SHOWCASE", "ok", &ok_test));
+	routine.AddNewTest(Test("SHOWCASE", "ok", &ok_test));
+	routine.AddNewTest(Test("SHOWCASE", "ok", &ok_test));
+	routine.AddNewTest(Test("SHOWCASE", "ok", &ok_test));
 	// ==================================================
 
-	launcher.Run();
-	return (0);
+	routine.Run();
+	return (routine.TestsOK());
 }

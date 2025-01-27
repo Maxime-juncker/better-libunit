@@ -1,8 +1,7 @@
-#pragma once
-
-#include <libunit.hpp>
-
+#ifndef TEST_HPP
+# define TEST_HPP
 class Routine;
+
 class Test
 {
 private:
@@ -20,3 +19,4 @@ public:
 	int	RunTest( Routine *caller );
 };
 
+#endif

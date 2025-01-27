@@ -1,10 +1,11 @@
 NAME = libunit.a
-CFLAGS = -Wall -Wextra -Werror $(INCLUDES_D) -g3
+CFLAGS = $(INCLUDES_D) -g3
 CC = g++
 MAKEFLAGS += --no-print-directory
 
 SRC =	Test.cpp		\
 		Routine.cpp		\
+		utils.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

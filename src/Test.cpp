@@ -2,6 +2,7 @@
 #include <sys/wait.h>
 #include <iomanip>
 #include <stdlib.h>
+#include <iostream>
 
 #include <Test.hpp>
 #include <Routine.hpp>
@@ -29,7 +30,6 @@ std::string Test::CodeToString(int code)
 		return ("OK");
 	return ("KO");
 }
-
 
 /*
  * @brief Print the result of the test

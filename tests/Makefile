@@ -5,10 +5,11 @@ CC = g++
 CFLAGS = -Wall -Wextra -Werror -g3
 INCLUDES =	-I../includes/				\
 
-TEST_SRCS = showcase/00_routine.cpp		\
+TEST_SRCS = showcase/00_showcase.cpp		\
 			showcase/01_ok_test.cpp		\
 			showcase/02_ko_test.cpp		\
 			showcase/03_segv_test.cpp	\
+			showcase_ok/00_routine.cpp	\
 
 TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 MAIN_OBJ = main.o

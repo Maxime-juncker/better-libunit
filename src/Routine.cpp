@@ -1,8 +1,29 @@
 #include <Routine.hpp>
+#include <Test.hpp>
 
 #include <iomanip>
 #include <stdlib.h>
-#include <Test.hpp>
+
+/* -------------------------------------------------------------------------- */
+/*                                   getters                                  */
+/* -------------------------------------------------------------------------- */
+
+int Routine::GetNbTests()
+{
+	return (m_tests.size());
+}
+
+int Routine::GetNbPassed()
+{
+	return (m_passed);
+}
+
+int Routine::TestsOK()
+{
+	return (m_passed == m_tests.size());
+}
+
+/* -------------------------------------------------------------------------- */
 
 void Routine::AddNewTest(Test new_test)
 {
@@ -16,16 +37,16 @@ void Routine::AddNewTest(Test new_test)
 int Routine::Run()
 {
 	size_t	i = 0;
-	size_t	passed = 0;
+	m_passed = 0;
 
 	std::cout << RESET << "==== " << BOLD << m_routine_name << RESET << " ====" << std::endl;
 	while (i < m_tests.size())
 	{
-		passed += m_tests[i].RunTest(this);
+		m_passed += m_tests[i].RunTest(this);
 		i++;
 	}
-	EndRoutine(passed);
-	return (passed);
+	EndRoutine();
+	return (m_passed);
 }
 
 void Routine::Clear()
@@ -33,20 +54,34 @@ void Routine::Clear()
 	m_tests.clear();
 }
 
-/*
- * @brief Print the result of the routine
-*/
-void Routine::EndRoutine(size_t passed)
+void	Routine::PrintRes(void)
 {
 	std::cout << m_routine_name << " result: ";
-	std::cout << "[" << passed << "/" << m_tests.size() << "]";
+	std::cout << "[" << m_passed << "/" << m_tests.size() << "]";
 
 	std::cout << std::setfill('.') << std::setw(25 - m_routine_name.size() - 13);
 
-	if (passed != m_tests.size())
+	if (m_passed != m_tests.size())
 		std::cout << "[" << RED << "FAILED" << RESET << "]" << std::endl;
 	else
 		std::cout << "[" << GREEN << "PASSED" << RESET << "]" << std::endl;
 	std::cout << RESET << "\n";
+}
+
+/*
+ * @brief Print the result of the routine
+*/
+void Routine::EndRoutine()
+{
+	if (m_res)
+	{
+		m_res->total_tests += GetNbTests();
+		m_res->tests_passed += GetNbPassed();
+		if (TestsOK())
+			m_res->routine_passed++;
+		m_res->total_routine++;
+
+	}
+	PrintRes();
 	Clear();
 }

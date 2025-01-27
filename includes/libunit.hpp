@@ -1,8 +1,7 @@
-#pragma once
+#ifndef LIBUNIT_HPP
+# define LIBUNIT_HPP
 
 # include <iostream>
-# include <string>
-# include <vector>
 
 /* -------------------------------------------------------------------------- */
 /*                                   Colors                                   */
@@ -34,3 +33,15 @@
 /*                                   Styles                                   */
 /* -------------------------------------------------------------------------- */
 # define BOLD		"\033[1;37m"
+
+typedef struct s_FinalResult
+{
+	int	total_tests;
+	int	tests_passed;
+	int	routine_passed;
+	int	total_routine;
+}	t_FinalResult;
+
+void	PrintFinalResult( struct FinalResult res );
+
+#endif

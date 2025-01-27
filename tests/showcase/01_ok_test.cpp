@@ -1,5 +1,3 @@
-#include <libunit.hpp>
-
 int	ok_test (void)
 {
 	if (1 == 1)

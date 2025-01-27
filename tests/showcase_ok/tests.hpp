@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   tests.hpppp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 11:00:09 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/27 16:40:25 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:56:18 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/27 09:58:45 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "showcase/tests.hpp"
+#ifndef TESTS_H
+# define TESTS_H
 
-int	main(void)
-{
-	t_FinalResult	res = {0, 0, 0, 0};
+# include <libunit.hpp>
 
-	test_routine(&res);
-	ok_routine(&res);
-}
+int test_routine( void );
+int ok_routine( void );
+
+
+// tests.cpp
+int	ok_test( void );
+int	ko_test( void );
+int	segv_test( void );
+
+#endif
