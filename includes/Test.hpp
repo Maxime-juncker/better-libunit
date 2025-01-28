@@ -1,22 +1,23 @@
-#ifndef TEST_HPP
-# define TEST_HPP
-class Routine;
+#pragma once
 
-class Test
+namespace Libunit
 {
-private:
-	std::string	m_function_name;
-	std::string	m_test_name;
-	int			(*f)( void );
+	class Routine;
 
-private:
-	std::string	CodeToString(int code);
-	void		PrintResult(std::string	res);
-	int			EndTest(int code);
-public:
-	Test(std::string f_name, std::string t_name, int (*f)( void ));
-	~Test() {}
-	int	RunTest( Routine *caller );
-};
+	class Test
+	{
+	private:
+		std::string	m_function_name;
+		std::string	m_test_name;
+		int			(*f)( void );
 
-#endif
+	private:
+		std::string	CodeToString(int code);
+		void		PrintResult(std::string	res);
+		int			EndTest(int code);
+	public:
+		Test(std::string f_name, std::string t_name, int (*f)( void ));
+		~Test() {}
+		int	RunTest( Routine *caller );
+	};
+} // namespace Libunit

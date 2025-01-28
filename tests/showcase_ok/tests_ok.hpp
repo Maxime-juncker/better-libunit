@@ -10,12 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#pragma once
 
 # include <libunit.hpp>
 
-int test_routine( void );
 int ok_routine( void );
 
 
@@ -23,5 +21,3 @@ int ok_routine( void );
 int	ok_test( void );
 int	ko_test( void );
 int	segv_test( void );
-
-#endif

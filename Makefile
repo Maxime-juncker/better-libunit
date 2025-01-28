@@ -5,7 +5,7 @@ MAKEFLAGS += --no-print-directory
 
 SRC =	Test.cpp		\
 		Routine.cpp		\
-		utils.cpp
+		Utils.cpp		\
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -30,9 +30,21 @@ CURSOR_ON 		= \e[?25h
 RM = rm -fr
 ARGS = 1
 
-all: $(BIN_D)$(NAME)
+all: header $(BIN_D)$(NAME)
 	$(MAKE) -C tests/
 
+.PHONY: header
+header:
+	printf "$(YELLOW)"
+	printf "\n========================="
+	printf "\n  _     ___ ____  _   _ _   _ ___ _____ "
+	printf "\n | |   |_ _| __ )| | | | \ | |_ _|_   _|"
+	printf "\n | |    | ||  _ \| | | |  \| || |  | |  "
+	printf "\n | |___ | || |_) | |_| | |\  || |  | |  "
+	printf "\n |_____|___|____/ \___/|_| \_|___| |_|  "
+	printf "\n\n=========================\n"
+	printf "[Author]: $(GREEN)Maxime Juncker"
+	printf "$(YELLOW)\t[github]: $(GREEN)https://github.com/Maxime-juncker/better-libunit.git\n\n"
 
 $(BIN_D)$(NAME): $(OBJ) | $(BIN_D)
 	printf "$(BLUE)compiling: [$$(ls obj | wc -l)/$(shell ls src | wc -l)] [OK]\r\n"

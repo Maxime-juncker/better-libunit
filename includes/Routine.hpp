@@ -1,34 +1,37 @@
-#ifndef ROUTINE_HPP
-# define ROUTINE_HPP
+#pragma once
 
 #include <vector>
 #include <string>
 #include "libunit.hpp"
-class Test;
 
-class Routine
+namespace Libunit
 {
-private:
-	std::string 		m_routine_name = "default";
-	t_FinalResult*		m_res = nullptr;
-	std::vector<Test>	m_tests;
-	size_t 				m_passed;
+	class Test;
 
-public:
-	Routine(std::string name, t_FinalResult *res) : m_routine_name{name}, m_res{res} {}
-	~Routine() {}
+	class Routine
+	{
+	private:
 
-	void	AddNewTest(Test new_test);
-	int		Run();
-	void	Clear();
-	void 	PrintRes(void);
+		std::string 		m_routine_name = "default";
+		std::vector<Test>	m_tests;
+		size_t 				m_passed;
 
-	int		GetNbTests();
-	int		GetNbPassed();
-	int		TestsOK();
+	public:
+		static 				t_FinalResult	m_final_res;
+		Routine(std::string name);
+		~Routine() {}
 
-private:
-	void	EndRoutine();
-};
+		void			AddNewTest(Test new_test);
+		int				Run();
+		void			Clear();
+		void 			PrintRes(void);
 
-#endif
+		int				GetNbTests();
+		int				GetNbPassed();
+		int				TestsOK();
+		t_FinalResult	GetFinalRes() const { return m_final_res; }
+
+	private:
+		void	EndRoutine();
+	};
+} // namespace Libunit
